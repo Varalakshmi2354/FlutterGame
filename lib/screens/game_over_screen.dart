@@ -1,11 +1,13 @@
 import 'package:flappy_bird_game/game/assets.dart';
 import 'package:flappy_bird_game/game/flappy_bird_game.dart';
+import 'package:flappy_bird_game/components/background.dart';
 import 'package:flutter/material.dart';
 
 class GameOverScreen extends StatelessWidget {
   final FlappyBirdGame game;
+  final Background background; 
 
-  const GameOverScreen({Key? key, required this.game}) : super(key: key);
+  const GameOverScreen({Key? key, required this.game, required this.background}) : super(key: key); 
 
   @override
   Widget build(BuildContext context) => Material(
@@ -42,5 +44,7 @@ class GameOverScreen extends StatelessWidget {
     game.bird.reset();
     game.overlays.remove('gameOver');
     game.resumeEngine();
+    background.resetBackground(); 
   }
 }
+

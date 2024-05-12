@@ -5,6 +5,8 @@ import 'package:flappy_bird_game/screens/main_menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/game_over_screen.dart';
+import 'package:flappy_bird_game/screens/game_over_screen.dart'; 
+import 'package:flappy_bird_game/components/background.dart';
 
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
@@ -13,13 +15,14 @@ Future<void> main() async {
   await Flame.device.fullScreen();
 
   final game = FlappyBirdGame();
+   final background = Background();
   runApp(
     GameWidget(
       game: game,
       initialActiveOverlays: const [MainMenuScreen.id],
       overlayBuilderMap: {
         'mainMenu': (context, _) => MainMenuScreen(game: game),
-        'gameOver': (context, _) => GameOverScreen(game: game),
+        'gameOver': (context, _) => GameOverScreen(game: game, background: background),
       },
     ),
   );
