@@ -35,4 +35,20 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyBirdGame> {
 
     add(RectangleHitbox());
   }
+  Future<void> _loadPipe() async {
+    final pipe = await Flame.images.load(Assets.pipe);
+    final pipeRotated = await Flame.images.load(Assets.pipeRotated);
+  }
+
+  void updatePipe() async {
+    final score = gameRef.getScore();
+
+    if (score >= 2) {
+      final newPipe = await Flame.images.load(Assets.pipebk);
+      final newPipeRotated = await Flame.images.load(Assets.pipeRotatedbk);
+    }
+  }
+  void resetPipe() async {
+    await _loadPipe();
+  }
 }
